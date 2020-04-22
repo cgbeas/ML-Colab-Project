@@ -1,0 +1,48 @@
+{% extends "home.html" %}
+
+{% block body %}
+
+	<style>
+		div {
+		  text-align: justify;
+		  text-justify: inter-word;
+		}
+	</style>
+	<div class="content" style="text-align:justify;">
+		<p style="font-family:'Courier'">
+			Image classification is one of the cornerstone problems in the field of Computer Vision. As its name
+			suggests, it consists of having a trained model be able to accurately classify the objects in a previously
+			unseen image based on the data or images the model has seen during training.
+		</p>
+	</div>
+
+	<div class="content">
+		<h3>
+			{% if prediction >= 0 %}
+
+			Is a {{ prediction }}.
+			{% else %}
+				Try it out!
+			{% endif %}
+		</h3>
+
+	{% block page_content %}
+
+		<form action = "/" method = "POST" enctype = "multipart/form-data" style = "padding-top: 100px;">
+			<label for="model" style="font-family:'Roboto'">Choose a model to try:</label>
+			<select id="model">
+			  <option value="flower">Flower Recognition</option>
+			  <option value="digit">Digit</option>
+			</select>
+			<br/>
+			<label for="image" style="font-family:'Roboto'">Select an image you'd like to predict:</label>
+			<input type="file" name="image"/>
+			<br/>
+			<input type="submit"/>
+		</form>
+	</div>
+	{% endblock %}
+
+
+<script> var i =  [1,2,3] </script>
+{% endblock %}
